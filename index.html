@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE ENGINEER | Robot Builder</title>
+  <meta name="description" content="Build realistic robots with real-world parts and AI-powered code simulation." />
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <div class="logo">
+        <span>THE ENGINEER</span>
+      </div>
+      <div class="header-actions">
+        <button id="btn-next-step" class="btn-primary">Generate Code & Test ➔</button>
+      </div>
+    </header>
+
+    <main>
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <h2>Part Library</h2>
+          <p>Drag parts to the workspace</p>
+        </div>
+        <div id="sidebar-content">
+          <!-- Populated by main.ts -->
+        </div>
+      </aside>
+
+      <section class="workspace-container">
+        <div id="workspace">
+          <!-- Robot parts go here -->
+        </div>
+
+        <div class="zoom-controls glass-panel">
+          <button id="zoom-in">+</button>
+          <button id="zoom-out">-</button>
+        </div>
+
+        <div class="workspace-overlay">
+          <div class="instruction-badge glass-panel">
+            Step 1: Assembly
+          </div>
+          <div id="status-checklist" class="glass-panel status-checklist">
+            <h4>Build Status</h4>
+            <div class="check-item" data-type="Brain">Brain: ❌</div>
+            <div class="check-item" data-type="Energy">Power: ❌</div>
+            <div class="check-item" data-type="Joint">Motion: ❌</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="knowledge-panel">
+        <div class="anatomy-guide glass-panel">
+          <h3>Robot Anatomy 101</h3>
+          <p id="anatomy-explanation">Select a part to see its role in the robot's "body".</p>
+        </div>
+
+        <div class="fun-facts glass-panel">
+          <h3>Did You Know?</h3>
+          <div id="fact-display" class="fact-text">
+            The word "robot" comes from the Czech word "robota," meaning forced labor.
+          </div>
+        </div>
+
+        <div class="general-info glass-panel">
+          <h3>Robotics 101</h3>
+          <div id="general-info-display">
+            <!-- Populated by main.ts -->
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- AI Prompt Modal (Step 2) -->
+    <div id="ai-modal" class="modal">
+      <div class="modal-content glass-panel">
+        <h2>Robot Objective</h2>
+        <p>Describe what your robot should do. Our AI will generate the hardware requirements and code.</p>
+        <textarea id="robot-prompt"
+          placeholder="e.g. A robotic arm that sorts colored blocks using a camera..."></textarea>
+        <div class="modal-actions">
+          <button id="btn-generate" class="btn-primary">Generate Engine Logic</button>
+          <button class="btn-secondary" onclick="document.getElementById('ai-modal').classList.remove('visible')">Back
+            to Build</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testing/Scanner (Step 3) -->
+    <div id="test-view" class="overlay-full hidden">
+      <div class="scanner-line"></div>
+      <div class="scan-results glass-panel">
+        <h2>Analyzing Hardware...</h2>
+        <div id="scan-progress"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
